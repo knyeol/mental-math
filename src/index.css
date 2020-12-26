@@ -1,13 +1,47 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap");
+
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  height: -webkit-fill-available;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  height: 100vh;
+  height: -webkit-fill-available;
+  background-color: #222222;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: #444444;
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 480px) {
+  .wrapper {
+    height: 100vh;
+  }
+  .container {
+    border: 1px solid #666666;
+  }
 }
