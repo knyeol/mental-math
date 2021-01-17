@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { op, sign } from ".././lib/values";
 import { toggleItems, randomItem } from ".././lib/manageArray";
 import { store, storeItem, getItem } from ".././lib/storage";
@@ -12,8 +12,8 @@ export function Operations({ setOperation }) {
     const randomOperation = randomItem(array);
 
     setOperations([...array]);
-    storeItem(store.operations, array);
     setOperation(randomOperation);
+    storeItem(store.operations, array);
     storeItem(store.operation, randomOperation);
   }
 
