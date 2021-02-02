@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { op, sign } from ".././lib/values";
 import { toggleItems, randomItem } from ".././lib/manageArray";
 import { store, storeItem, getItem } from ".././lib/storage";
