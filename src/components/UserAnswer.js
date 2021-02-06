@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { store, storeItem } from "../lib/storage";
 
-export function UserAnswer({ answer, setScore }) {
+export function UserAnswer({ answer, setScore, setSubmit }) {
   const [input, setInput] = useState("");
 
   function onChange(e) {
@@ -20,20 +20,22 @@ export function UserAnswer({ answer, setScore }) {
 
   function onSubmit(e) {
     e.preventDefault();
+    setSubmit((submit) => !submit);
+
     if (!input.trim()) return;
-    setScore(score => updateScore(score));
+    setScore((score) => updateScore(score));
     setInput("");
   }
 
   return (
     <div className="answer-container">
-      <form onSubmit={e => onSubmit(e)}>
+      <form onSubmit={(e) => onSubmit(e)}>
         <input
           autoFocus
           className="user-input"
           type="number"
           value={input}
-          onChange={e => onChange(e)}
+          onChange={(e) => onChange(e)}
         />
       </form>
     </div>

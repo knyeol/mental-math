@@ -7,7 +7,7 @@ import {
   Difficulty,
   Operations,
   UserAnswer,
-  Score
+  Score,
 } from "./components";
 
 function App() {
@@ -16,13 +16,14 @@ function App() {
     operation: getItem(store.operation) || ["add"],
     difficulty: getItem(store.difficulty) || "easy",
     operands: getItem(store.operands) || [7, 9],
-    score: getItem(store.score) || { right: 0, wrong: 0 }
+    score: getItem(store.score) || { right: 0, wrong: 0 },
   };
   const [operation, setOperation] = useState(initState.operation);
   const [difficulty, setDifficulty] = useState(initState.difficulty);
   const [operands, setOperands] = useState(initState.operands);
   const [score, setScore] = useState(initState.score);
   const [answer, setAnswer] = useState();
+  const [submit, setSubmit] = useState(false);
 
   useEffect(() => {
     if (!init) return setInit(true);
@@ -40,9 +41,9 @@ function App() {
   return (
     <div className="container">
       <Question operands={operands} operation={operation} />
-      <UserAnswer answer={answer} setScore={setScore} />
+      <UserAnswer answer={answer} setScore={setScore} setSubmit={setSubmit} />
       <Score score={score} setScore={setScore} setInit={setInit} />
-      <Operations setOperation={setOperation} />
+      <Operations submit={submit} setOperation={setOperation} />
       <Difficulty difficulty={difficulty} setDifficulty={setDifficulty} />
     </div>
   );

@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { op, sign } from ".././lib/values";
 import { toggleItems, randomItem } from ".././lib/manageArray";
 import { store, storeItem, getItem } from ".././lib/storage";
 
-export function Operations({ setOperation }) {
+export function Operations({ submit, setOperation }) {
   const initialOperations = getItem(store.operations) || ["add"];
   const [operations, setOperations] = useState(initialOperations);
 
@@ -17,7 +17,13 @@ export function Operations({ setOperation }) {
     storeItem(store.operation, randomOperation);
   }
 
-  const getSelected = target => (operations.includes(target) ? "selected" : "");
+  useEffect(() => {
+    const randomOperation = randomItem(operations);
+    setOperation(randomOperation);
+  }, [submit]);
+
+  const getSelected = (target) =>
+    operations.includes(target) ? "selected" : "";
 
   return (
     <div className="buttons-container op-buttons">
